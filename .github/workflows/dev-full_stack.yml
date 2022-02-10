@@ -1,0 +1,12 @@
+name: 'dev-full_stack-tf-apply'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+
+      - name: Deploy Fargate cluster and task definitions 
+        run: echo Deploy Fargate cluster and task definitions
