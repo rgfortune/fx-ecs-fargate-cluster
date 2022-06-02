@@ -81,8 +81,8 @@ resource "aws_ecs_task_definition" "fx" {
         "cpu": 0,
         "environment": [
           {
-            "name": "DBHOST",
-            "value": "${local.db_credentials.dbhost}"
+            "name": "FX_ENV",
+            "value": "${var.env}"
           }
         ],
         "mountPoints": [
