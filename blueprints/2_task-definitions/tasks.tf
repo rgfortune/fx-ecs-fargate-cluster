@@ -1,29 +1,3 @@
-#-------------------------------------
-# App Logs Access Points
-#-------------------------------------
-
-# Python Flask Logs Access Point
-resource "aws_efs_access_point" "flask_logs" {
-
-  for_each       = var.users
-  file_system_id = data.terraform_remote_state.fx_storage.outputs.fx_storage_id
-
-  #forex user
-  posix_user {
-    uid = 1101
-    gid = 1004
-  }
-
-  root_directory {
-    path = "/${each.key}/logs"
-  }
-
-  tags = {
-    "Name" = "Python Flask Logs - ${each.key}"
-  }
-}
-
-
 #------------------------------
 # Task Definition               
 #------------------------------
@@ -82,14 +56,7 @@ resource "aws_ecs_task_definition" "fx" {
         "environment": [
           {
             "name": "FX_ENV",
-            "value": "${var.env}"
-          }
-        ],
-        "mountPoints": [
-          {
-            "readOnly": null,
-            "containerPath": "/opt/flask/forex/logs",
-            "sourceVolume": "python-flask-logs"
+            "value": "${upper(var.common_tags["Environment"])}"
           }
         ],
         "image": "444395806902.dkr.ecr.us-east-1.amazonaws.com/fx-app:latest",
@@ -103,20 +70,6 @@ resource "aws_ecs_task_definition" "fx" {
       }
   ]
   DEFINITION
-
-  volume {
-    name = "python-flask-logs"
-
-    efs_volume_configuration {
-      file_system_id          = data.terraform_remote_state.fx_storage.outputs.fx_storage_id
-      transit_encryption      = "ENABLED"
-      transit_encryption_port = 3999
-      authorization_config {
-        access_point_id = aws_efs_access_point.flask_logs[each.key].id
-        iam             = "ENABLED"
-      }
-    }
-  }
 
 }
 

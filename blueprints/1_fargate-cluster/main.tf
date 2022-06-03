@@ -9,7 +9,5 @@ resource "aws_ecs_cluster" "fx" {
     name  = "containerInsights"
     value = "enabled"
   }
-  tags = {
-    "Name" = var.cluster_tag
-  }
+  tags = var.common_tags
 }
