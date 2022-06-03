@@ -14,7 +14,8 @@ suffix = "tst"
 # ECS Cluster
 #-------------------------
 
-cluster_name = "FX"
+cluster_name      = "FX"
+capacity_provider = "FARGATE_SPOT" # FARGATE|FARGATE_SPOT
 
 
 #-------------------------

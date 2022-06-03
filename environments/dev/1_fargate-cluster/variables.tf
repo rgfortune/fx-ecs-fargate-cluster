@@ -21,3 +21,6 @@ variable "environment" {
 variable "cluster_name" {
   type = string
 }
+variable "capacity_provider" {
+  type = string
+}
