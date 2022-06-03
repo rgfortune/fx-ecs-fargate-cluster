@@ -60,12 +60,6 @@ resource "aws_ecs_task_definition" "fx" {
           }
         ],
         "image": "444395806902.dkr.ecr.us-east-1.amazonaws.com/fx-app:latest",
-        "dependsOn": [
-          {
-            "containerName": "fxdb",
-            "condition": "START"
-          }
-        ],
         "name": "app"
       }
   ]
