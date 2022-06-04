@@ -19,6 +19,6 @@ terraform {
   backend "s3" {
     bucket = "ecs-fx-test-tfstate"
     key    = "ecs-fx-vpc.terraform.tfstate"
-    region = "eu-west-1"
+    region = "us-east-1"
   }
 }

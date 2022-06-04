@@ -11,7 +11,7 @@ data "terraform_remote_state" "vpc" {
   config = {
     bucket = "ecs-fx-test-tfstate"
     key    = "ecs-fx-vpc.terraform.tfstate"
-    region = "eu-west-1"
+    region = "us-east-1"
   }
 
   # https://www.terraform.io/docs/language/expressions/references.html#path-module
