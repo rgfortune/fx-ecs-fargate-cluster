@@ -1,4 +1,4 @@
-name: 'dev-full_stack-tf-apply'
+name: 'test-full_stack-tf-apply'
 
 on:
   workflow_dispatch:
