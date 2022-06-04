@@ -1,9 +1,6 @@
 name: 'test-task-definitions-tf-speculative-plan'
 
 on:
-  workflow_run:
-    workflows: [test-iam-tf-apply]
-    types: [completed]
   workflow_dispatch:
 
 jobs:
