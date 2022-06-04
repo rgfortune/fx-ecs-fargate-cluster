@@ -2,28 +2,34 @@
 # VPC Module Variables
 #------------------------------------------------
 
-variable "env" {
-  type        = string
-  description = "e.g. dev"
+variable "vpc_name" {}
+variable "cidr" {}
+
+variable "availability_zones_count" {
+  type        = number
+  description = "Number of availabilty zones to use"
+  default     = 2
 }
-variable "vpc_name" {
-  type        = string
-  description = "e.g. Dev VPC"
+
+variable "public_subnet_names" {
+  type        = list(any)
+  description = "List of private subnets"
+  default     = ["public"]
 }
-variable "cidr" {
-  type        = string
-  description = "e.g. 10.72.176.0/21"
+
+variable "private_subnet_names" {
+  type        = list(any)
+  description = "List of private subnets"
+  default     = ["private"]
 }
-variable "region" {
-  type        = string
-  description = "e.g. eu-west-2"
+
+# Default to 1 in a public subnet.
+# Setting to 2 or equal to the total number of availability zones in use will provide HA
+variable "nat_gw_count" {
+  type        = number
+  description = "Number of NAT GWs in public subnets to create"
+  default     = 1
 }
-variable "project_name" {
-  type        = string
-  description = "e.g. eu-west-2"
-}
-variable "owner" {
-  type        = string
-  description = "e.g. eu-west-2"
-}
+
+variable "common_tags" {}
 

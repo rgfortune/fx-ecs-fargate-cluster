@@ -3,12 +3,12 @@
 #------------------------------------------- 
 
 output "vpc_id" { value = module.vpc.vpc_id }
-output "vpc_cidr_block" { value = module.vpc.vpc_cidr_block }
+output "cidr_block" { value = module.vpc.cidr_block }
 
-output "env" { value = module.vpc.env }
+output "availability_zones" { value = module.vpc.availability_zones }
 
-output "aws_subnet_publicAzA_id" { value = module.vpc.aws_subnet_publicAzA_id }
-output "aws_subnet_publicAzB_id" { value = module.vpc.aws_subnet_publicAzB_id }
+output "public_subnets" { value = module.vpc.public_subnets }
 
-output "aws_subnet_privateAzA_id" { value = module.vpc.aws_subnet_privateAzA_id }
-output "aws_subnet_privateAzB_id" { value = module.vpc.aws_subnet_privateAzB_id }
+output "private_subnets_00" { value = module.vpc.private_subnets_00 }
+output "private_subnets_01" { value = module.vpc.private_subnets_01 }
+output "private_subnets_02" { value = module.vpc.private_subnets_02 }
