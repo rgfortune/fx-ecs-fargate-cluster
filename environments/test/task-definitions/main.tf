@@ -3,7 +3,7 @@
 #------------------------------------------------
 module "task_definitions" {
 
-  source = "../../../blueprints/4_task-definitions"
+  source = "../../../blueprints/task-definitions"
 
   region = var.region
 

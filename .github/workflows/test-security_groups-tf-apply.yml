@@ -35,19 +35,19 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
-      working-directory: ./environments/test/2_security_groups
+      working-directory: ./environments/test/security_groups
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: terraform fmt -check
-      working-directory: ./environments/test/2_security_groups
+      working-directory: ./environments/test/security_groups
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan -var-file=../test.tfvars
-      working-directory: ./environments/test/2_security_groups
+      working-directory: ./environments/test/security_groups
 
     # Apply the Terraform execution plan
     - name: Terraform Apply
       run: terraform apply -auto-approve -var-file=../test.tfvars
-      working-directory: ./environments/test/2_security_groups
+      working-directory: ./environments/test/security_groups

@@ -1,8 +1,8 @@
 #------------------------------------------------
 # Resources
 #------------------------------------------------
-module "iam" {
+module "security_groups" {
 
-  source = "../../../blueprints/1_iam"
+  source = "../../../blueprints/security_groups"
 
 }

@@ -3,7 +3,7 @@
 #------------------------------------------------
 module "fargate_cluster" {
 
-  source = "../../../blueprints/3_fargate-cluster"
+  source = "../../../blueprints/fargate-cluster"
 
   cluster_name      = var.cluster_name
   capacity_provider = var.capacity_provider
