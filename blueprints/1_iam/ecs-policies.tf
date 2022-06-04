@@ -77,7 +77,17 @@ resource "aws_iam_policy_attachment" "ecs_task_execution_role_policy_attachment"
   policy_arn = aws_iam_policy.ecs_task_execution_policy.arn
 }
 
-resource "aws_iam_role_policy_attachment" "ecs_task_role_policy_attachment" {
+resource "aws_iam_role_policy_attachment" "ecs_task_role_s3_policy" {
   role       = aws_iam_role.ecs_task_role.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonElasticFileSystemClientFullAccess"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_task_role_ssm_policy" {
+  role       = aws_iam_role.ecs_task_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_task_role_cwlogs_policy" {
+  role       = aws_iam_role.ecs_task_role.name
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
 }
