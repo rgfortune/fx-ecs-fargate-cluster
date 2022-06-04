@@ -1,14 +1,14 @@
-name: 'dev-task-definitions-tf-speculative-plan'
+name: 'dev-vpc-tf-apply'
 
 on:
   workflow_run:
-    workflows: [dev-iam-tf-apply]
+    workflows: [dev-full_stack-tf-apply]
     types: [completed]
   workflow_dispatch:
 
 jobs:
-  task-definitions:
-    name: 'task-definitions'
+  vpc:
+    name: 'vpc'
     runs-on: ubuntu-latest
     environment: dev
     env:
@@ -35,14 +35,19 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
-      working-directory: ./environments/dev/4_task-definitions
+      working-directory: ./environments/dev/vpc
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: terraform fmt -check
-      working-directory: ./environments/dev/4_task-definitions
+      working-directory: ./environments/dev/vpc
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan -var-file=../dev.tfvars
-      working-directory: ./environments/dev/4_task-definitions
+      working-directory: ./environments/dev/vpc
+
+    # Apply the Terraform execution plan
+    - name: Terraform Apply
+      run: terraform apply -auto-approve -var-file=../dev.tfvars
+      working-directory: ./environments/dev/vpc

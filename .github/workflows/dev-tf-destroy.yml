@@ -34,18 +34,18 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
-      working-directory: ./environments/dev/1_fargate-cluster
+      working-directory: ./environments/dev/3_fargate-cluster
 
     # Generates an execution plan for Terraform
     - name: Terraform Destroy Plan
       run: terraform plan -destroy -var-file=../dev.tfvars
-      working-directory: ./environments/dev/1_fargate-cluster
+      working-directory: ./environments/dev/3_fargate-cluster
 
 
     # Apply the Terraform destroy execution plan
     - name: Terraform Destroy
       run: terraform apply -destroy -auto-approve -var-file=../dev.tfvars
-      working-directory: ./environments/dev/1_fargate-cluster
+      working-directory: ./environments/dev/3_fargate-cluster
 
   task-definitions:
     name: 'task-definitions'
@@ -75,14 +75,14 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
-      working-directory: ./environments/dev/2_task-definitions
+      working-directory: ./environments/dev/4_task-definitions
 
     # Generates an execution plan for Terraform
     - name: Terraform Destroy Plan
       run: terraform plan -destroy -var-file=../dev.tfvars
-      working-directory: ./environments/dev/2_task-definitions
+      working-directory: ./environments/dev/4_task-definitions
 
     # Apply the Terraform destroy execution plan
     - name: Terraform Destroy
       run: terraform apply -destroy -auto-approve -var-file=../dev.tfvars
-      working-directory: ./environments/dev/2_task-definitions
+      working-directory: ./environments/dev/4_task-definitions

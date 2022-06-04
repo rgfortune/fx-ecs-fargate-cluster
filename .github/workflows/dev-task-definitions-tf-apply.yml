@@ -2,7 +2,7 @@ name: 'dev-task-definitions-tf-apply'
 
 on:
   workflow_run:
-    workflows: [dev-full_stack-tf-apply]
+    workflows: [dev-iam-tf-apply]
     types: [completed]
   workflow_dispatch:
 
@@ -35,19 +35,19 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
-      working-directory: ./environments/dev/2_task-definitions
+      working-directory: ./environments/dev/4_task-definitions
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: terraform fmt -check
-      working-directory: ./environments/dev/2_task-definitions
+      working-directory: ./environments/dev/4_task-definitions
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan -var-file=../dev.tfvars
-      working-directory: ./environments/dev/2_task-definitions
+      working-directory: ./environments/dev/4_task-definitions
 
     # Apply the Terraform execution plan
     - name: Terraform Apply
       run: terraform apply -auto-approve -var-file=../dev.tfvars
-      working-directory: ./environments/dev/2_task-definitions
+      working-directory: ./environments/dev/4_task-definitions
