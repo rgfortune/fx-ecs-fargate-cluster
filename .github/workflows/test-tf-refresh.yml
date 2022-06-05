@@ -36,8 +36,8 @@ jobs:
       working-directory: ./environments/test/security_groups
 
     # Generates an execution plan for Terraform
-    - name: Terraform Plan (Refresh Only)
-      run: terraform plan -refresh-only -var-file=../test.tfvars
+    - name: Terraform Apply (Refresh Only) # (Needed to update outputs when there is no resource change)
+      run: terraform apply -refresh-only -var-file=../test.tfvars
       working-directory: ./environments/test/security_groups
 
 
@@ -72,6 +72,6 @@ jobs:
       working-directory: ./environments/test/iam
 
     # Generates an execution plan for Terraform
-    - name: Terraform Plan (Refresh Only)
-      run: terraform plan -refresh-only -var-file=../test.tfvars
+    - name: Terraform Apply (Refresh Only) # (Needed to update outputs when there is no resource change)
+      run: terraform apply -refresh-only -var-file=../test.tfvars
       working-directory: ./environments/test/iam
