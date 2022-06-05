@@ -50,7 +50,7 @@ resource "aws_iam_policy_attachment" "bastion" {
   policy_arn = aws_iam_policy.bastion.arn
 }
 
-resource "aws_iam_policy_attachment" "bastion" {
+resource "aws_iam_policy_attachment" "bastion_cwlogs" {
   name       = "bastion"
   roles      = [aws_iam_role.bastion.name]
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
