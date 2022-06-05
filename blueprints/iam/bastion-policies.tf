@@ -2,8 +2,8 @@
 # Bastion Role
 #------------------------------------------
 
-resource "aws_iam_role" "bastion" {
-  name = "Bastion"
+resource "aws_iam_role" "fx_bastion" {
+  name = "FX Bastion"
   path = "/"
 
   assume_role_policy = <<EOF
@@ -24,9 +24,9 @@ EOF
 }
 
 # Bastion policy document
-data "aws_iam_policy_document" "bastion" {
+data "aws_iam_policy_document" "fx_bastion" {
   statement {
-    sid    = "BastionAccess"
+    sid    = "FXBastionAccess"
     effect = "Allow"
     actions = [
       "s3:*",
@@ -37,19 +37,19 @@ data "aws_iam_policy_document" "bastion" {
 }
 
 # Create bastion IAM policy
-resource "aws_iam_policy" "bastion" {
-  name        = "bastion"
+resource "aws_iam_policy" "fx_bastion" {
+  name        = "FX Bastion"
   path        = "/"
-  description = "Bastion policy"
-  policy      = data.aws_iam_policy_document.bastion.json
+  description = "FX Bastion policy"
+  policy      = data.aws_iam_policy_document.fx_bastion.json
 }
 
-resource "aws_iam_role_policy_attachment" "bastion" {
-  role       = aws_iam_role.bastion.name
-  policy_arn = aws_iam_policy.bastion.arn
+resource "aws_iam_role_policy_attachment" "fx_bastion" {
+  role       = aws_iam_role.fx_bastion.name
+  policy_arn = aws_iam_policy.fx_bastion.arn
 }
 
-resource "aws_iam_role_policy_attachment" "bastion_cwlogs" {
-  role       = aws_iam_role.bastion.name
+resource "aws_iam_role_policy_attachment" "fx_bastion_cwlogs" {
+  role       = aws_iam_role.fx_bastion.name
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
 }
