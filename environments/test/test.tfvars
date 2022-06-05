@@ -44,3 +44,10 @@ capacity_provider = "FARGATE_SPOT" # FARGATE|FARGATE_SPOT
 users = {
   rfortune = "ricardo.g.fortune@gmail.com"
 }
+
+#-------------------------
+# Bastion
+#-------------------------
+
+bastion_type = "t3.micro"
+key_name     = "automation"
