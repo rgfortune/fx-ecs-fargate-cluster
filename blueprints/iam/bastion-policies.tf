@@ -53,3 +53,9 @@ resource "aws_iam_role_policy_attachment" "fx_bastion_cwlogs" {
   role       = aws_iam_role.fx_bastion.name
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
 }
+
+# Instance profile
+resource "aws_iam_instance_profile" "fx_bastion" {
+  name = "FX_Bastion"
+  role = aws_iam_role.bastion.name
+}
