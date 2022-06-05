@@ -3,7 +3,7 @@
 #------------------------------------------
 
 resource "aws_iam_role" "fx_bastion" {
-  name = "FX-Bastion"
+  name = "FX_Bastion"
   path = "/"
 
   assume_role_policy = <<EOF
@@ -38,7 +38,7 @@ data "aws_iam_policy_document" "fx_bastion" {
 
 # Create bastion IAM policy
 resource "aws_iam_policy" "fx_bastion" {
-  name        = "FX-Bastion"
+  name        = "FX_Bastion"
   path        = "/"
   description = "FX Bastion policy"
   policy      = data.aws_iam_policy_document.fx_bastion.json
