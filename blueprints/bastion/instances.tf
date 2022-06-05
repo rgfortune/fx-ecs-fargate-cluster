@@ -7,7 +7,7 @@ resource "aws_instance" "bastion" {
   instance_type               = var.bastion_type
   key_name                    = var.key_name
   subnet_id                   = data.terraform_remote_state.vpc.outputs.public_subnets[0]["id"]
-  iam_instance_profile        = data.terraform_remote_state.iam.outputs.bastion_role_arn
+  iam_instance_profile        = data.terraform_remote_state.iam.outputs.fx_bastion_role_arn
   vpc_security_group_ids      = [data.terraform_remote_state.security_groups.outputs.bastion]
   associate_public_ip_address = true
 
