@@ -14,7 +14,7 @@ resource "aws_security_group" "fx_task" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = merge(local.common_tags, {
+  tags = merge(var.common_tags, {
     Name        = "FX"
     Description = "FX Task"
   })
@@ -37,7 +37,7 @@ resource "aws_security_group" "bastion" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = merge(local.common_tags, {
+  tags = merge(var.common_tags, {
     Name        = "Bastion"
     Description = "Bastion Instance"
     Role        = "Bastion"
